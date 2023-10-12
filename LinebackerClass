@@ -1,0 +1,47 @@
+import numpy as np
+
+class Linebacker:
+    def __init__(self, position, speed, strength, tackling_ability):
+        self.position = position
+        self.speed = speed
+        self.strength = strength
+        self.tackling_ability = tackling_ability
+
+    def calculate_coverage_area(self):
+        """
+        Calculates the coverage area of the linebacker.
+
+        Returns:
+            A list of positions that the linebacker can cover.
+        """
+
+        # Calculate the linebacker's coverage radius based on their speed and strength.
+        coverage_radius = self.speed * self.strength
+
+        # Calculate the linebacker's coverage area based on their position and coverage radius.
+        coverage_area = []
+        for x in range(int(self.position[0] - coverage_radius), int(self.position[0] + coverage_radius)):
+            for y in range(int(self.position[1] - coverage_radius), int(self.position[1] + coverage_radius)):
+                coverage_area.append((x, y))
+
+        return coverage_area
+
+    def calculate_tackle_probability(self, offensive_player):
+        """
+        Calculates the probability that the linebacker can tackle the offensive player.
+
+        Args:
+            offensive_player: An OffensivePlayer object.
+
+        Returns:
+            A float representing the probability that the linebacker can tackle the offensive player.
+        """
+
+        # Calculate the distance between the linebacker and the offensive player.
+        distance_to_offensive_player = np.linalg.norm(self.position - offensive_player.position)
+
+        # Calculate the tackle probability based on the linebacker's speed, strength, tackling ability, and distance to the offensive player.
+        tackle_probability = self.speed * self.strength * self.tackling_ability / distance_to_offensive_player
+
+        return tackle_probability
+
