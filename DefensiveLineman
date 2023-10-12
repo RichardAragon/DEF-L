@@ -1,0 +1,16 @@
+# Create a defensive lineman object.
+defensive_lineman = DefensiveLine(position=(0, 0), speed=10, strength=10)
+
+# Create a list of offensive line objects.
+offensive_line = [
+    OffensiveLine(position=(1, 0)),
+    OffensiveLine(position=(2, 0)),
+    OffensiveLine(position=(3, 0)),
+    OffensiveLine(position=(4, 0)),
+    OffensiveLine(position=(5, 0)),
+]
+
+# Calculate the pressure that the defensive lineman can put on the offensive line.
+pressure = defensive_lineman.calculate_pressure(offensive_line)
+
+print(pressure)
