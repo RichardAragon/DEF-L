@@ -1,0 +1,7 @@
+# Create a linebacker object.
+linebacker = Linebacker(position=(0, 0), speed=10, strength=10, tackling_ability=10)
+
+# Calculate the linebacker's coverage area.
+coverage_area = linebacker.calculate_coverage_area()
+
+print(coverage_area)
