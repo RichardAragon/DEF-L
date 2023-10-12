@@ -1,0 +1,10 @@
+# Create a defensive lineman object.
+defensive_lineman = DefensiveLine(position=(0, 0), speed=10, strength=10)
+
+# Create an offensive running back object.
+offensive_running_back = OffensiveRunningBack(position=(1, 1))
+
+# Calculate the tackle probability.
+tackle_probability = defensive_lineman.calculate_tackle_probability(offensive_running_back)
+
+print(tackle_probability)
