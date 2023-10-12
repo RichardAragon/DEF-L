@@ -1,0 +1,10 @@
+# Create a secondary player object.
+secondary_player = Secondary(position=(0, 0), speed=10, coverage_ability=10, interception_ability=10)
+
+# Create an offensive receiver object.
+offensive_receiver = OffensiveReceiver(position=(1, 1))
+
+# Calculate the interception probability.
+interception_probability = secondary_player.calculate_interception_probability(offensive_receiver)
+
+print(interception_probability)
