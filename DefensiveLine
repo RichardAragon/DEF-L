@@ -1,0 +1,46 @@
+import numpy as np
+
+class DefensiveLine:
+    def __init__(self, position, speed, strength):
+        self.position = position
+        self.speed = speed
+        self.strength = strength
+
+    def calculate_pressure(self, offensive_line):
+        """
+        Calculates the pressure that the defensive lineman can put on the offensive line.
+
+        Args:
+            offensive_line: A list of OffensiveLine objects.
+
+        Returns:
+            A float representing the amount of pressure that the defensive lineman can put on the offensive line.
+        """
+
+        # Calculate the distance between the defensive lineman and the quarterback.
+        distance_to_quarterback = np.linalg.norm(self.position - offensive_line.quarterback.position)
+
+        # Calculate the pressure that the defensive lineman can put on the offensive line based on their speed, strength, and distance to the quarterback.
+        pressure = self.speed * self.strength / distance_to_quarterback
+
+        return pressure
+
+    def calculate_tackle_probability(self, offensive_running_back):
+        """
+        Calculates the probability that the defensive lineman can tackle the offensive running back.
+
+        Args:
+            offensive_running_back: An OffensiveRunningBack object.
+
+        Returns:
+            A float representing the probability that the defensive lineman can tackle the offensive running back.
+        """
+
+        # Calculate the distance between the defensive lineman and the offensive running back.
+        distance_to_running_back = np.linalg.norm(self.position - offensive_running_back.position)
+
+        # Calculate the tackle probability based on the defensive lineman's speed, strength, and distance to the offensive running back.
+        tackle_probability = self.speed * self.strength / distance_to_running_back
+
+        return tackle_probability
+
