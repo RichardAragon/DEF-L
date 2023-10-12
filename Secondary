@@ -1,0 +1,46 @@
+import numpy as np
+
+class Secondary:
+    def __init__(self, position, speed, coverage_ability, interception_ability):
+        self.position = position
+        self.speed = speed
+        self.coverage_ability = coverage_ability
+        self.interception_ability = interception_ability
+
+    def calculate_coverage_area(self):
+        """
+        Calculates the coverage area of the secondary player.
+
+        Returns:
+            A list of positions that the secondary player can cover.
+        """
+
+        # Calculate the secondary player's coverage radius based on their speed and coverage ability.
+        coverage_radius = self.speed * self.coverage_ability
+
+        # Calculate the secondary player's coverage area based on their position and coverage radius.
+        coverage_area = []
+        for x in range(int(self.position[0] - coverage_radius), int(self.position[0] + coverage_radius)):
+            for y in range(int(self.position[1] - coverage_radius), int(self.position[1] + coverage_radius)):
+                coverage_area.append((x, y))
+
+        return coverage_area
+
+    def calculate_interception_probability(self, offensive_receiver):
+        """
+        Calculates the probability that the secondary player can intercept a pass from the offensive receiver.
+
+        Args:
+            offensive_receiver: An OffensiveReceiver object.
+
+        Returns:
+            A float representing the probability that the secondary player can intercept a pass from the offensive receiver.
+        """
+
+        # Calculate the distance between the secondary player and the offensive receiver.
+        distance_to_offensive_receiver = np.linalg.norm(self.position - offensive_receiver.position)
+
+        # Calculate the interception probability based on the secondary player's speed, coverage ability, interception ability, and distance to the offensive receiver.
+        interception_probability = self.speed * self.coverage_ability * self.interception_ability / distance_to_offensive_receiver
+
+        return interception_probability
